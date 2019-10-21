@@ -13,6 +13,7 @@ import useSharedStyles from "../styles/SharedStyles";
 import { connect } from "react-redux";
 import Paper from "@material-ui/core/Paper";
 import AmountPipe from "../pipes/AmountPipe";
+import TextField from '@material-ui/core/TextField';
 function TransactionsList(props) {
   const transactions = props.transactions;
   const sharedStyles = useSharedStyles();
@@ -25,11 +26,9 @@ function TransactionsList(props) {
   };
 
   function onDelete(transaction) {
-    const timestap = transaction;
-    console.error(timestap);
     props.dispatch({
       type: "DELETE_TRANSACTION",
-      data: timestap
+      data: transaction,
     });
   }
   function renderPanel(transaction, index) {
@@ -56,11 +55,28 @@ function TransactionsList(props) {
           </Grid>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <Grid container display="flex" alignContent="center" spacing={1}>
-            <Grid item xs={10}>
-              {transaction.title}
+          <Grid container display="flex" flex alignContent="center" spacing={1}>
+            <Grid item xs={4}>
+            <TextField
+                id={"timestamp-"+index}
+                label="Timestamp"
+                value={moment(transaction.timestamp).format('llll')}
+                className={sharedStyles.width_100}
+                margin="dense"
+                variant="outlined"
+              />
             </Grid>
-            <Grid item xs={2}>
+            <Grid item xs={4}>
+            <TextField
+                id={"sender-"+index}
+                label="From"
+                value={transaction.sender}
+                className={sharedStyles.width_100}
+                margin="dense"
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item container display="flex"  alignItems='center' justify='flex-end' xs={4}>
               <Button
                 color="secondary"
                 variant="contained"

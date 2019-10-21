@@ -22,13 +22,15 @@ var defaultState = {
       timestamp: moment([1996]),
       amount: 100.0,
       base: "EUR",
-      title: "My birthday gift!"
+      title: "My birthday gift!",
+      sender: 'Freddie Mercury'
     },
     {
       timestamp: moment([2014]),
       amount: -45.0,
       base: "EUR",
-      title: "Some cash from a friend"
+      title: "Some cash from a friend",
+      sender: 'Linus Torvalds'
     }
   ]
 };

@@ -33,7 +33,8 @@ function TransactionForm(props) {
         amount: amount,
         title: title,
         timestamp: moment(moment.now()).clone(),
-        base: "EUR"
+        base: "EUR",
+        sender: 'Me, myself and I',
       }
     });
     setTitle("");
