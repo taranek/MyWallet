@@ -1,11 +1,9 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import {MuiThemeProvider, createMuiTheme} from '@material-ui/core';
-import AdminView from './components/AdminView';
-const theme = createMuiTheme({
-  
-});
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
+import AdminView from "./views/AdminView";
+const theme = createMuiTheme({});
 
 function App() {
   return (
