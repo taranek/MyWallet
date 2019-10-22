@@ -23,14 +23,14 @@ var defaultState = {
       amount: 100.0,
       base: "EUR",
       title: "My birthday gift!",
-      sender: 'Freddie Mercury'
+      person: "Freddie Mercury"
     },
     {
       timestamp: moment([2014]),
       amount: -45.0,
       base: "EUR",
-      title: "Some cash from a friend",
-      sender: 'Linus Torvalds'
+      title: "Beers with friends",
+      person: "Linus Torvalds"
     }
   ]
 };
@@ -47,10 +47,10 @@ function amount(state = defaultState, action) {
         )
       };
     case "CHANGE_TARGET":
-        return {
-          ...state,
-          targetCurrency:action.data,
-        };
+      return {
+        ...state,
+        targetCurrency: action.data
+      };
     case "ADD_TRANSACTION":
       return {
         ...state,
