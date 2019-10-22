@@ -1,6 +1,6 @@
 import { createStore } from "redux";
 import moment from "moment";
-var defaultState = {
+let defaultState = {
   base: "EUR",
   targetCurrency: "PLN",
   rates: [
@@ -35,7 +35,6 @@ var defaultState = {
   ]
 };
 function amount(state = defaultState, action) {
-  console.log("state:" + JSON.stringify(state));
   switch (action.type) {
     case "CHANGE_RATE":
       return {
@@ -69,5 +68,5 @@ function arrayRemove(arr, timestampToRemove) {
   return arr.filter(el => el !== timestampToRemove);
 }
 
-var store = createStore(amount);
+let store = createStore(amount);
 export default store;

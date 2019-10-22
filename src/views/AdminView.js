@@ -32,7 +32,7 @@ export default function CenteredGrid() {
       <Box p={2} my={5} py={5}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={9}>
-            <Paper className={[sharedStyles.paper, sharedStyles.lightBlue]}>
+            <Paper className={[sharedStyles.paper, sharedStyles.lightBlue].join(' ')}>
               <h2>Transactions</h2>
               <CurrencySelect></CurrencySelect>
               <h3>Create new</h3>
@@ -42,7 +42,7 @@ export default function CenteredGrid() {
             </Paper>
           </Grid>
           <Grid item xs={12} md={3}>
-            <Paper className={[sharedStyles.paper, sharedStyles.lightBlue]}>
+            <Paper className={[sharedStyles.paper, sharedStyles.lightBlue].join(' ')}>
               <h2>Conversions</h2>
               <ConversionsList></ConversionsList>
             </Paper>

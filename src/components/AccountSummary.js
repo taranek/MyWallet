@@ -26,10 +26,11 @@ function AccountSummary(props) {
 
   function getHighestTransaction() {
     return props.transactions.reduce((max, transaction) =>
-      max.amount > transaction.amount ? max : transaction
+      parseFloat(AmountPipe(max.amount)) > parseFloat(AmountPipe(transaction.amount)) ? max : transaction
     );
   }
   function calculateTotal() {
+
     return props.transactions.reduce(
       (sum, transaction) =>
         parseFloat(parseFloat(sum) + parseFloat(transaction.amount)),
@@ -40,12 +41,12 @@ function AccountSummary(props) {
     <React.Fragment>
       <Box display="flex" alignSelf="flex-end">
         <Chip
-          className={[internalStyles.chip, sharedStyles.lightBlue]}
+          className={[internalStyles.chip, sharedStyles.lightBlue].join(' ')}
           color="secondary"
           label={`Highest transaction amount: ${AmountPipe(highest)} ${base}`}
         />
         <Chip
-          className={[internalStyles.chip, sharedStyles.lightBlue]}
+          className={[internalStyles.chip, sharedStyles.lightBlue].join(' ')}
           color="secondary"
           label={`Transactions total amount: ${AmountPipe(total)} ${base}`}
         />
@@ -54,7 +55,7 @@ function AccountSummary(props) {
   );
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state, props) {
   return {
     transactions: state.transactions,
     base: state.base

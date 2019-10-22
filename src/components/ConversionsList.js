@@ -29,7 +29,7 @@ function ConversionsList(props) {
               id={"conversion-base" + index}
               label={base}
               value={AmountPipe(1)}
-              className={[sharedStyles.textField, sharedStyles.fullWidth]}
+              className={[sharedStyles.textField, sharedStyles.fullWidth].join(' ')}
               InputLabelProps={{
                 shrink: true
               }}
@@ -54,7 +54,7 @@ function ConversionsList(props) {
               value={conversion.rate}
               onChange={handleChange()}
               type="number"
-              className={[sharedStyles.textField, sharedStyles.fullWidth]}
+              className={[sharedStyles.textField, sharedStyles.fullWidth].join(' ')}
               InputLabelProps={{
                 shrink: true
               }}

@@ -8,7 +8,7 @@ import Paper from "@material-ui/core/Paper";
 import useSharedStyles from "../styles/SharedStyles";
 import store from "../stores/configureStore";
 import { connect } from "react-redux";
-
+import AmountPipe from '../pipes/AmountPipe';
 function TransactionForm(props) {
   const sharedStyles = useSharedStyles();
   const [amount, setAmount] = React.useState("");
@@ -16,16 +16,13 @@ function TransactionForm(props) {
   const titleMaxLength = 50;
 
   function handleFormSubmission() {
-    const isTitleValid = validateTitle(title);
-    const isAmountValid = validateAmount(amount);
-
-    if (isTitleValid && isAmountValid) {
+    if (isTitleValid(title) && isAmountValid(amount)) {
       setAmount(amount);
       setTitle(title);
       props.dispatch({
         type: "ADD_TRANSACTION",
         data: {
-          amount: amount,
+          amount: parseFloat(AmountPipe(amount)),
           title: title,
           timestamp: moment(moment.now()).clone(),
           base: "EUR",
@@ -36,38 +33,43 @@ function TransactionForm(props) {
       setTitle("");
     }
   }
-  let validateAmount = amount => !isNaN(amount) && amount !== 0.0;
-  let validateTitle = title => title.length < titleMaxLength;
+  let isNullOrWhitespace = (string) =>(string===null || string.trim().length===0);
+  let isAmountValid = amount => (amount!==null && !isNaN(amount) && amount !== 0.0);
+  let isTitleValid = title => (title!==null && title.length < titleMaxLength);
 
   return (
     <Grid item xs={12}>
-      <Paper className={[sharedStyles.paper, sharedStyles.form]}>
+      <Paper className={[sharedStyles.paper, sharedStyles.form].join(' ')}>
         <MaterialUIForm onSubmit={handleFormSubmission}>
           <Grid container alignItems="center" spacing={2}>
             <Grid item xs={2}>
               <TextField
                 required
-                id="outlined-required"
+                id="transaction-form-amount"
                 label="EUR"
                 value={amount}
-                onChange={e => setAmount(e.target.value)}
+                onChange={e =>{
+                  !isNullOrWhitespace(e.target.value)? setAmount(e.target.value) : setAmount('')
+                } }
                 className={sharedStyles.fullWidth}
                 margin="dense"
                 variant="outlined"
-                error={!validateAmount(amount)}
+                error={!isAmountValid(amount)}
               />
             </Grid>
             <Grid item xs={7}>
               <TextField
                 required
-                id="outlined-required"
+                id="transaction-form-title"
                 label="Title"
                 value={title}
-                onChange={e => setTitle(e.target.value)}
+                onChange={e =>{
+                  !isNullOrWhitespace(e.target.value)? setTitle(e.target.value) : setTitle('')
+                } }
                 className={sharedStyles.fullWidth}
                 margin="dense"
                 variant="outlined"
-                error={!validateTitle(title)}
+                error={!isTitleValid(title)}
               />
             </Grid>
             <Grid item xs={3}>

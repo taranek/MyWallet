@@ -36,7 +36,7 @@ function CurrencySelect(props) {
   return (
     <Paper className={sharedStyles.paper}>
       <FormControl variant="outlined" className={classes.formControl}>
-        <InputLabel ref={inputLabel} htmlFor="outlined-age-native-simple">
+        <InputLabel ref={inputLabel} htmlFor="target-currency-dropdown">
           Target Currency
         </InputLabel>
         <Select
@@ -46,7 +46,7 @@ function CurrencySelect(props) {
           labelWidth={labelWidth}
           inputProps={{
             name: "Target-Currency",
-            id: "outlined-age-native-simple"
+            id: "target-currency-dropdown"
           }}
         >
           {rates.map((rate, i) => (

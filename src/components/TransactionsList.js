@@ -54,20 +54,14 @@ function TransactionsList(props) {
             <Grid
               item
               xs={2}
-              className={[
-                sharedStyles.textBold,
-                assignColor(transaction.amount)
-              ]}
+              className={[sharedStyles.textBold,assignColor(transaction.amount)].join(' ')}
             >
               {AmountPipe(transaction.amount)} {transaction.base}
             </Grid>
             <Grid
               item
               xs={2}
-              className={[
-                sharedStyles.textBold,
-                assignColor(transaction.amount)
-              ]}
+              className={[sharedStyles.textBold, assignColor(transaction.amount) ].join(' ')}
             >
               {AmountPipe(transaction.amount * rate)} {targetCurrency}
             </Grid>
@@ -123,30 +117,26 @@ function TransactionsList(props) {
   return (
     <Grid item xs={12}>
       <Paper
-        className={[
-          sharedStyles.paper,
-          sharedStyles.textSecondary,
-          sharedStyles.textBold
-        ]}
+        className={[sharedStyles.paper,sharedStyles.textSecondary,sharedStyles.textBold].join(' ')}
       >
         <Grid container spacing={1}>
           <Grid item xs={2}>
             <Typography
-              className={[sharedStyles.textSecondary, sharedStyles.textBold]}
+              className={[sharedStyles.textSecondary, sharedStyles.textBold].join(' ')}
             >
               {`Amount [${base}]`}
             </Typography>
           </Grid>
           <Grid item xs={2}>
             <Typography
-              className={[sharedStyles.textSecondary, sharedStyles.textBold]}
+              className={[sharedStyles.textSecondary, sharedStyles.textBold].join(' ')}
             >
               {`Amount [${targetCurrency}]`}
             </Typography>
           </Grid>
           <Grid item xs={6}>
             <Typography
-              className={[sharedStyles.textSecondary, sharedStyles.textBold]}
+              className={[sharedStyles.textSecondary, sharedStyles.textBold].join(' ')}
             >
               Title
             </Typography>
@@ -154,14 +144,14 @@ function TransactionsList(props) {
           <Grid item xs={2}>
             <Typography
               align="right"
-              className={[sharedStyles.textSecondary, sharedStyles.textBold]}
+              className={[sharedStyles.textSecondary, sharedStyles.textBold].join(' ')}
             >
               Details
             </Typography>
           </Grid>
         </Grid>
       </Paper>
-      {transactions.map((e, i) => renderPanel(e, i))}
+      {transactions.map((transaction, i) => renderPanel(transaction, i))}
     </Grid>
   );
 }
