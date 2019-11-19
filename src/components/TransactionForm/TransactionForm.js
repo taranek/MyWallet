@@ -5,10 +5,10 @@ import moment from "moment";
 import { Button } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Paper from "@material-ui/core/Paper";
-import useSharedStyles from "../styles/SharedStyles";
-import store from "../stores/configureStore";
+import useSharedStyles from "styles/SharedStyles";
+import store from "stores/main/configureStore";
 import { connect } from "react-redux";
-import AmountPipe from '../pipes/AmountPipe';
+import AmountPipe from "../../pipes/AmountPipe";
 function TransactionForm(props) {
   const sharedStyles = useSharedStyles();
   const [amount, setAmount] = React.useState("");
@@ -33,13 +33,15 @@ function TransactionForm(props) {
       setTitle("");
     }
   }
-  let isNullOrWhitespace = (string) =>(string===null || string.trim().length===0);
-  let isAmountValid = amount => (amount!==null && !isNaN(amount) && amount !== 0.0);
-  let isTitleValid = title => (title!==null && title.length < titleMaxLength);
+  const isNullOrWhitespace = string =>
+    string === null || string.trim().length === 0;
+  const isAmountValid = amount =>
+    amount !== null && !isNaN(amount) && amount !== 0.0;
+  const isTitleValid = title => title !== null && title.length < titleMaxLength;
 
   return (
     <Grid item xs={12}>
-      <Paper className={[sharedStyles.paper, sharedStyles.form].join(' ')}>
+      <Paper className={[sharedStyles.paper, sharedStyles.form].join(" ")}>
         <MaterialUIForm onSubmit={handleFormSubmission}>
           <Grid container alignItems="center" spacing={2}>
             <Grid item xs={2}>
@@ -48,9 +50,11 @@ function TransactionForm(props) {
                 id="transaction-form-amount"
                 label="EUR"
                 value={amount}
-                onChange={e =>{
-                  !isNullOrWhitespace(e.target.value)? setAmount(e.target.value) : setAmount('')
-                } }
+                onChange={e => {
+                  !isNullOrWhitespace(e.target.value)
+                    ? setAmount(e.target.value)
+                    : setAmount("");
+                }}
                 className={sharedStyles.fullWidth}
                 margin="dense"
                 variant="outlined"
@@ -63,9 +67,11 @@ function TransactionForm(props) {
                 id="transaction-form-title"
                 label="Title"
                 value={title}
-                onChange={e =>{
-                  !isNullOrWhitespace(e.target.value)? setTitle(e.target.value) : setTitle('')
-                } }
+                onChange={e => {
+                  !isNullOrWhitespace(e.target.value)
+                    ? setTitle(e.target.value)
+                    : setTitle("");
+                }}
                 className={sharedStyles.fullWidth}
                 margin="dense"
                 variant="outlined"

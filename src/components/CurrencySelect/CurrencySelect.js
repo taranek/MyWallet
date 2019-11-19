@@ -4,23 +4,18 @@ import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import { connect } from "react-redux";
-import useSharedStyles from "../styles/SharedStyles";
+import useSharedStyles from "styles/SharedStyles";
 import Paper from "@material-ui/core/Paper";
+import styles from "./styles";
 
-const internalStyles = makeStyles(theme => ({
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120
-  }
-}));
-
-function CurrencySelect(props) {
-  const classes = internalStyles();
+export function CurrencySelect(props) {
+  const classes = styles();
   const sharedStyles = useSharedStyles();
   const targetCurrency = props.targetCurrency;
   const rates = props.rates;
 
   const inputLabel = React.useRef(null);
+
   const [labelWidth, setLabelWidth] = React.useState(0);
   React.useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth);
@@ -40,7 +35,9 @@ function CurrencySelect(props) {
           Target Currency
         </InputLabel>
         <Select
+          id="currency-select"
           native
+          fullWidth
           value={targetCurrency}
           onChange={handleChange()}
           labelWidth={labelWidth}
@@ -49,9 +46,9 @@ function CurrencySelect(props) {
             id: "target-currency-dropdown"
           }}
         >
-          {rates.map((rate, i) => (
-            <option key={i} value={rate.to}>
-              {rate.to}
+          {Object.keys(rates).map((rate, i) => (
+            <option key={i} value={rate}>
+              {rate}
             </option>
           ))}
         </Select>
@@ -59,7 +56,7 @@ function CurrencySelect(props) {
     </Paper>
   );
 }
-function mapStateToProps(state) {
+export function mapStateToProps(state) {
   return {
     rates: state.rates,
     targetCurrency: state.targetCurrency

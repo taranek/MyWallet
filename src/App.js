@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
 import AdminView from "./views/AdminView";
+
 const theme = createMuiTheme({});
 
 function App() {

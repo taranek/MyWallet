@@ -1,21 +1,13 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import useSharedStyles from "../styles/SharedStyles";
+import useSharedStyles from "styles/SharedStyles";
 import { connect } from "react-redux";
+import styles from "./styles";
 import Box from "@material-ui/core/Box";
 import Chip from "@material-ui/core/Chip";
-import AmountPipe from "../pipes/AmountPipe";
+import AmountPipe from "../../pipes/AmountPipe";
 
-const useStyles = makeStyles(theme => ({
-  chip: {
-    marginLeft: theme.spacing(2),
-    marginRight: theme.spacing(2),
-    color: theme.palette.text.primary,
-    fontWeight: theme.typography.fontWeightBold
-  }
-}));
-function AccountSummary(props) {
-  const internalStyles = useStyles();
+export function AccountSummary(props) {
+  const internalStyles = styles();
   const sharedStyles = useSharedStyles();
   const isThereAnyTransaction = props.transactions.length !== 0;
   const highest = isThereAnyTransaction
@@ -26,14 +18,15 @@ function AccountSummary(props) {
 
   function getHighestTransaction() {
     return props.transactions.reduce((max, transaction) =>
-      parseFloat(AmountPipe(max.amount)) > parseFloat(AmountPipe(transaction.amount)) ? max : transaction
+      parseFloat(AmountPipe(max.amount)) >
+      parseFloat(AmountPipe(transaction.amount))
+        ? max
+        : transaction
     );
   }
   function calculateTotal() {
-
     return props.transactions.reduce(
-      (sum, transaction) =>
-        parseFloat(parseFloat(sum) + parseFloat(transaction.amount)),
+      (sum, transaction) => parseFloat(sum) + parseFloat(transaction.amount),
       0
     );
   }
@@ -41,13 +34,15 @@ function AccountSummary(props) {
     <React.Fragment>
       <Box display="flex" alignSelf="flex-end">
         <Chip
-          className={[internalStyles.chip, sharedStyles.lightBlue].join(' ')}
+          className={[internalStyles.chip, sharedStyles.lightBlue].join(" ")}
           color="secondary"
+          id="highest-amount"
           label={`Highest transaction amount: ${AmountPipe(highest)} ${base}`}
         />
         <Chip
-          className={[internalStyles.chip, sharedStyles.lightBlue].join(' ')}
+          className={[internalStyles.chip, sharedStyles.lightBlue].join(" ")}
           color="secondary"
+          id="total-amount"
           label={`Transactions total amount: ${AmountPipe(total)} ${base}`}
         />
       </Box>
@@ -55,7 +50,7 @@ function AccountSummary(props) {
   );
 }
 
-function mapStateToProps(state, props) {
+export function mapStateToProps(state, props) {
   return {
     transactions: state.transactions,
     base: state.base
