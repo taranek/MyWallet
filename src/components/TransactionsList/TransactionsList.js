@@ -1,10 +1,10 @@
 import React from "react";
-import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import useSharedStyles from "styles/SharedStyles";
 import { connect } from "react-redux";
 import Paper from "@material-ui/core/Paper";
 import TransactionPanel from "../TransactionPanel/TransactionPanel";
+import TableHeader from './../TableHeader/TableHeader';
 function TransactionsList(props) {
   const transactions = props.transactions;
   const sharedStyles = useSharedStyles();
@@ -22,45 +22,26 @@ function TransactionsList(props) {
       >
         <Grid container spacing={1}>
           <Grid item xs={2}>
-            <Typography
-              className={[
-                sharedStyles.textSecondary,
-                sharedStyles.textBold
-              ].join(" ")}
-            >
-              {`Amount [${base}]`}
-            </Typography>
+            <TableHeader>
+                {`Amount [${base}]`}
+            </TableHeader>
           </Grid>
           <Grid item xs={2}>
-            <Typography
-              className={[
-                sharedStyles.textSecondary,
-                sharedStyles.textBold
-              ].join(" ")}
-            >
-              {`Amount [${targetCurrency}]`}
-            </Typography>
+            <TableHeader>
+                {`Amount [${targetCurrency}]`}
+            </TableHeader>
           </Grid>
           <Grid item xs={6}>
-            <Typography
-              className={[
-                sharedStyles.textSecondary,
-                sharedStyles.textBold
-              ].join(" ")}
-            >
+            <TableHeader>
               Title
-            </Typography>
+            </TableHeader>
           </Grid>
           <Grid item xs={2}>
-            <Typography
-              align="right"
-              className={[
-                sharedStyles.textSecondary,
-                sharedStyles.textBold
-              ].join(" ")}
+            <TableHeader
+              align='right'
             >
               Details
-            </Typography>
+            </TableHeader>
           </Grid>
         </Grid>
       </Paper>

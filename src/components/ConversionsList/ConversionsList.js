@@ -3,7 +3,6 @@ import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 import useSharedStyles from "styles/SharedStyles";
 import { connect } from "react-redux";
-import AmountPipe from "../../pipes/AmountPipe";
 import ConversionInput from "./../ConversionInput/ConversionInput";
 function ConversionsList(props) {
   const rates = props.rates;

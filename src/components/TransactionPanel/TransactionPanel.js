@@ -8,8 +8,8 @@ import moment from "moment";
 import { Button } from "@material-ui/core";
 import useSharedStyles from "styles/SharedStyles";
 import { connect } from "react-redux";
-import AmountPipe from "../../pipes/AmountPipe";
 import TextField from "@material-ui/core/TextField";
+import TransactionAmount from './../TransactionAmount/TransactionAmount';
 
 function TransactionPanel(props) {
   const transaction = props.transaction;
@@ -17,12 +17,7 @@ function TransactionPanel(props) {
   const sharedStyles = useSharedStyles();
   const targetCurrency = props.targetCurrency;
   const [expanded, setExpanded] = React.useState(false);
-  const rate = props.rates[targetCurrency];
-  const assignColor = amount => {
-    return isAmountPositive(amount)
-      ? sharedStyles.amountPlus
-      : sharedStyles.amountMinus;
-  };
+  const isAmountPositive = amount => (amount>0);
   const assignFromToLabel = amount => {
     return isAmountPositive(amount) ? "Received from" : "Sent to";
   };
@@ -33,7 +28,7 @@ function TransactionPanel(props) {
       data: transaction
     });
   }
-  const isAmountPositive = amount => amount > 0;
+
   return (
     <ExpansionPanel
       expanded={expanded}
@@ -46,25 +41,17 @@ function TransactionPanel(props) {
         id={"panel-header-" + index}
       >
         <Grid container>
-          <Grid
-            item
-            xs={2}
-            className={[
-              sharedStyles.textBold,
-              assignColor(transaction.amount)
-            ].join(" ")}
-          >
-            {AmountPipe(transaction.amount)} {transaction.base}
+          <Grid item xs={2}>
+            <TransactionAmount 
+              amount={transaction.amount}
+              currency={transaction.base}>
+            </TransactionAmount>
           </Grid>
-          <Grid
-            item
-            xs={2}
-            className={[
-              sharedStyles.textBold,
-              assignColor(transaction.amount)
-            ].join(" ")}
-          >
-            {AmountPipe(transaction.amount * rate)} {targetCurrency}
+          <Grid item xs={2}>
+          <TransactionAmount 
+              amount={transaction.amount}
+              currency={targetCurrency}>
+            </TransactionAmount>
           </Grid>
           <Grid item xs={8} className={sharedStyles.textBold}>
             {transaction.title}
