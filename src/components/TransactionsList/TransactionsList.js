@@ -1,11 +1,13 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
-import useSharedStyles from "styles/SharedStyles";
+import useSharedStyles from "styles/sharedStyles";
 import { connect } from "react-redux";
 import Paper from "@material-ui/core/Paper";
-import TransactionPanel from "../TransactionPanel/TransactionPanel";
-import TableHeader from './../TableHeader/TableHeader';
-function TransactionsList(props) {
+import TransactionPanel from "components/TransactionPanel/TransactionPanel";
+import TransactionListHeader from "components/TransactionListHeader/TransactionListHeader";
+import propTypes from 'prop-types';
+
+export function TransactionsList(props) {
   const transactions = props.transactions;
   const sharedStyles = useSharedStyles();
   const base = props.base;
@@ -20,30 +22,10 @@ function TransactionsList(props) {
           sharedStyles.textBold
         ].join(" ")}
       >
-        <Grid container spacing={1}>
-          <Grid item xs={2}>
-            <TableHeader>
-                {`Amount [${base}]`}
-            </TableHeader>
-          </Grid>
-          <Grid item xs={2}>
-            <TableHeader>
-                {`Amount [${targetCurrency}]`}
-            </TableHeader>
-          </Grid>
-          <Grid item xs={6}>
-            <TableHeader>
-              Title
-            </TableHeader>
-          </Grid>
-          <Grid item xs={2}>
-            <TableHeader
-              align='right'
-            >
-              Details
-            </TableHeader>
-          </Grid>
-        </Grid>
+        <TransactionListHeader
+          base={base}
+          targetCurrency={targetCurrency}
+        ></TransactionListHeader>
       </Paper>
       {transactions.map((transaction, i) => {
         return (
@@ -58,7 +40,7 @@ function TransactionsList(props) {
   );
 }
 
-function mapStateToProps(state) {
+export function mapStateToProps(state) {
   return {
     transactions: state.transactions,
     targetCurrency: state.targetCurrency,
@@ -66,4 +48,11 @@ function mapStateToProps(state) {
     base: state.base
   };
 }
+TransactionsList.propTypes = {
+  transactions:propTypes.array,
+  base:propTypes.string,
+  rates:propTypes.object,
+  targetCurrency:propTypes.string,  
+}
+
 export default connect(mapStateToProps)(TransactionsList);

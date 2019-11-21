@@ -1,8 +1,9 @@
 import { createStore, applyMiddleware, compose } from "redux";
-import mainReducer from "./mainReducer";
+import mainReducer from "stores/main/mainReducer";
 import createSagaMiddleWare from "redux-saga";
-import defaultState from "./defaultState";
+import defaultState from "stores/main/defaultState";
 import initSagas from "initSagas";
+
 const getStore = () => {
   const sagaMiddleware = createSagaMiddleWare();
   const middlewares = [sagaMiddleware];

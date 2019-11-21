@@ -1,26 +1,24 @@
 import React from "react";
 import renderer from "react-test-renderer";
-import CurrencySelect, { mapStateToProps } from "./CurrencySelect";
+import Transactions, { mapStateToProps } from "./Transactions";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
 
-describe("CurrencySelect component tests", () => {
+describe("Transactions component tests", () => {
   describe("Redux", () => {
     it("Should map state to props correctly", () => {
       const appState = {
-        targetCurrency: "PLN",
-        rates: { CAD: 1.4608, HKD: 8.6361, ISK: 135.9 }
+        loading:true
       };
       const props = {};
       const componentState = mapStateToProps(appState, props);
       expect(componentState).toEqual(appState);
     });
   });
-  describe("Render properly", () => {
+  describe("Render properly when loading", () => {
     let tree = null;
     const appState = {
-      targetCurrency: "PLN",
-      rates: { CAD: 1.4608, HKD: 8.6361, ISK: 135.9 }
+      loading:true,
     };
     function myReducer(state = appState, action) {
       return state;
@@ -28,14 +26,17 @@ describe("CurrencySelect component tests", () => {
     beforeEach(() => {
       tree = renderer.create(
         <Provider store={createStore(myReducer)}>
-          <CurrencySelect></CurrencySelect>
+          <Transactions></Transactions>
         </Provider>
       );
     });
-    it("Should contain option for each currency", () => {
-      let component = tree.root;
-      let element = component.findByProps({ id: "currency-select" });
-      expect(element.props.children.length).toEqual(3);
+    it("Should contain five elements", () => {
+      let component = tree.toJSON();
+      expect(component.children.length).toEqual(5);
+    });
+    it("Should display progress bar when loading", () => {
+      let progressBars = tree.root.findAllByProps({role:'progressbar'});
+      expect(progressBars.length).toEqual(1);
     });
   });
 });

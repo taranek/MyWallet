@@ -1,0 +1,5 @@
+export const CHANGE_RATE = "CHANGE_RATE";
+export const CHANGE_TARGET = "CHANGE_TARGET";
+export const ADD_TRANSACTION = "ADD_TRANSACTION";
+export const DELETE_TRANSACTION = "DELETE_TRANSACTION";
+export const SET_RATES = "SET_RATES";

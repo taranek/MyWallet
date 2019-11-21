@@ -1,6 +1,7 @@
 import moment from "moment";
 
 let defaultState = {
+  loading: true,
   base: "EUR",
   targetCurrency: "PLN",
   rates: { CAD: 1.4608, HKD: 8.6361, PLN: 4.5 },

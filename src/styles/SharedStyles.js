@@ -1,7 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 import blue from "@material-ui/core/colors/blue";
-import green from "@material-ui/core/colors/green";
-import red from "@material-ui/core/colors/red";
+
 export default makeStyles(theme => ({
   paper: {
     padding: theme.spacing(2),
@@ -24,11 +23,4 @@ export default makeStyles(theme => ({
   fullWidth: {
     width: "100%"
   },
-
-  amountPlus: {
-    color: green[500]
-  },
-  amountMinus: {
-    color: red[500]
-  }
 }));

@@ -1,8 +1,6 @@
-import defaultState from "./defaultState";
+import defaultState from "stores/main/defaultState";
 export default function amount(state = defaultState, action) {
   switch (action.type) {
-    case "GET_STATE":
-      return state;
     case "CHANGE_RATE":
       return {
         ...state,
@@ -11,7 +9,8 @@ export default function amount(state = defaultState, action) {
     case "SET_RATES":
       return {
         ...state,
-        rates: action.data
+        rates: action.data,
+        loading: false
       };
     case "CHANGE_TARGET":
       return {
@@ -26,12 +25,12 @@ export default function amount(state = defaultState, action) {
     case "DELETE_TRANSACTION":
       return {
         ...state,
-        transactions: arrayRemove(state.transactions, action.data)
+        transactions: removeElement(state.transactions, action.data)
       };
     default:
       return state;
   }
 }
-function arrayRemove(arr, timestampToRemove) {
+function removeElement(arr, timestampToRemove) {
   return arr.filter(el => el !== timestampToRemove);
 }

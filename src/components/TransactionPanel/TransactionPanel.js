@@ -6,25 +6,31 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Grid from "@material-ui/core/Grid";
 import moment from "moment";
 import { Button } from "@material-ui/core";
-import useSharedStyles from "styles/SharedStyles";
+import useSharedStyles from "styles/sharedStyles";
 import { connect } from "react-redux";
 import TextField from "@material-ui/core/TextField";
-import TransactionAmount from './../TransactionAmount/TransactionAmount';
+import TransactionAmount from "components/TransactionAmount/TransactionAmount";
+import {DELETE_TRANSACTION } from "stores/main/actions";
+import propTypes from 'prop-types';
 
-function TransactionPanel(props) {
+export function TransactionPanel(props) {
+  const sharedStyles = useSharedStyles();
   const transaction = props.transaction;
   const index = props.index;
-  const sharedStyles = useSharedStyles();
   const targetCurrency = props.targetCurrency;
+  const targetRate = props.rates[targetCurrency];
+
   const [expanded, setExpanded] = React.useState(false);
-  const isAmountPositive = amount => (amount>0);
+  
+  const isAmountPositive = amount => amount > 0;
+  
   const assignFromToLabel = amount => {
     return isAmountPositive(amount) ? "Received from" : "Sent to";
   };
 
   function onDelete(transaction) {
     props.dispatch({
-      type: "DELETE_TRANSACTION",
+      type: DELETE_TRANSACTION,
       data: transaction
     });
   }
@@ -42,16 +48,16 @@ function TransactionPanel(props) {
       >
         <Grid container>
           <Grid item xs={2}>
-            <TransactionAmount 
+            <TransactionAmount
               amount={transaction.amount}
-              currency={transaction.base}>
-            </TransactionAmount>
+              currency={transaction.base}
+            ></TransactionAmount>
           </Grid>
           <Grid item xs={2}>
-          <TransactionAmount 
-              amount={transaction.amount}
-              currency={targetCurrency}>
-            </TransactionAmount>
+            <TransactionAmount
+              amount={targetRate * transaction.amount}
+              currency={targetCurrency}
+            ></TransactionAmount>
           </Grid>
           <Grid item xs={8} className={sharedStyles.textBold}>
             {transaction.title}
@@ -102,11 +108,17 @@ function TransactionPanel(props) {
   );
 }
 
-function mapStateToProps(state) {
+export function mapStateToProps(state) {
   return {
-    transactions: state.transactions,
     targetCurrency: state.targetCurrency,
     rates: state.rates
   };
 }
 export default connect(mapStateToProps)(TransactionPanel);
+
+TransactionPanel.propTypes = {
+  index: propTypes.number,
+  transaction: propTypes.object,
+  targetCurrency: propTypes.string,
+  rates: propTypes.object,
+}

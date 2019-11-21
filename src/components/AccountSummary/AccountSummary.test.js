@@ -35,7 +35,7 @@ describe("AccountSummary component tests", () => {
   describe("Render properly", () => {
     let tree = null;
     const appState = {
-      base: "TEST",
+      base: "EUR",
       transactions: [
         {
           timestamp: moment([1996]),
@@ -75,7 +75,7 @@ describe("AccountSummary component tests", () => {
     it("Should display the proper currency", () => {
       let component = tree.root;
       let label = component.findByProps({ id: "highest-amount" }).props.label;
-      expect(label).toContain("TEST");
+      expect(label).toContain("EUR");
     });
     it("Should display the total of all transactions", () => {
       let component = tree.root;

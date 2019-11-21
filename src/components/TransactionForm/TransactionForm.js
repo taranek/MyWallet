@@ -4,12 +4,13 @@ import Grid from "@material-ui/core/Grid";
 import moment from "moment";
 import { Button } from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
-import Paper from "@material-ui/core/Paper";
-import useSharedStyles from "styles/SharedStyles";
-import store from "stores/main/configureStore";
+import useSharedStyles from "styles/sharedStyles";
 import { connect } from "react-redux";
-import AmountPipe from "../../pipes/AmountPipe";
-function TransactionForm(props) {
+import amountPipe from "pipes/amountPipe";
+import {ADD_TRANSACTION} from "stores/main/actions";
+import propTypes from 'prop-types';
+
+export function TransactionForm(props) {
   const sharedStyles = useSharedStyles();
   const [amount, setAmount] = React.useState("");
   const [title, setTitle] = React.useState("");
@@ -19,10 +20,11 @@ function TransactionForm(props) {
     if (isTitleValid(title) && isAmountValid(amount)) {
       setAmount(amount);
       setTitle(title);
+      
       props.dispatch({
-        type: "ADD_TRANSACTION",
+        type: ADD_TRANSACTION,
         data: {
-          amount: parseFloat(AmountPipe(amount)),
+          amount: parseFloat(amountPipe(amount)),
           title: title,
           timestamp: moment(moment.now()).clone(),
           base: "EUR",
@@ -35,13 +37,13 @@ function TransactionForm(props) {
   }
   const isNullOrWhitespace = string =>
     string === null || string.trim().length === 0;
-  const isAmountValid = amount =>
+  
+    const isAmountValid = amount =>
     amount !== null && !isNaN(amount) && amount !== 0.0;
-  const isTitleValid = title => title !== null && title.length < titleMaxLength;
+  
+    const isTitleValid = title => title !== null && title.length < titleMaxLength;
 
   return (
-    <Grid item xs={12}>
-      <Paper className={[sharedStyles.paper, sharedStyles.form].join(" ")}>
         <MaterialUIForm onSubmit={handleFormSubmission}>
           <Grid container alignItems="center" spacing={2}>
             <Grid item xs={2}>
@@ -90,15 +92,17 @@ function TransactionForm(props) {
             </Grid>
           </Grid>
         </MaterialUIForm>
-      </Paper>
-    </Grid>
   );
 }
 
-function mapStateToProps(state) {
+export function mapStateToProps(state) {
   return {
-    store: store,
     transactions: state.transactions
   };
 }
+
+TransactionForm.propTypes = {
+  transactions:propTypes.array
+}
+
 export default connect(mapStateToProps)(TransactionForm);
