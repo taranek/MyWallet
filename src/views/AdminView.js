@@ -1,6 +1,6 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
-import useSharedStyles from "styles/sharedStyles";
+import useSharedStyles from "styles/ssharedStyles";
 import store from "stores/main/store";
 import Bar from "components/Bar/Bar";
 import Typography from "@material-ui/core/Typography";
