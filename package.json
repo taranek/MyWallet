@@ -2,8 +2,10 @@
   "name": "conversion-app",
   "version": "0.1.0",
   "private": true,
+  "homepage" : "https://taranek.github.io/MyWallet/",
   "dependencies": {
     "@material-ui/icons": "^4.5.1",
+    "gh-pages": "^2.1.1",
     "glamor": "^2.20.40",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
@@ -17,7 +19,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "format": "prettier --write \"**/*.+(js|jsx|json|css|md)\""
+    "format": "prettier --write \"**/*.+(js|jsx|json|css|md)\"",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"

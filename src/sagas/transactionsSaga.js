@@ -5,13 +5,12 @@ import Toaster from 'toaster/toaster';
 
 export function* transactionsSaga() {
   let toaster = new Toaster('TransactionToaster');
-  console.log("Starting fetching data...");
   toaster.inProgress('Fetching transactions...')
-  const response = yield call(fetch, "http://localhost:4000/api/transactions");
-  console.log("Loading takes looooooong time...");
-  yield delay(1500)
+  
+  const response = yield call(fetch, `${process.env.REACT_APP_MY_WALLET_API}/transactions`);
+  
   const data = yield apply(response, response.json);
-  console.log('Data from saga:',data);
+  
   yield put({ type: SET_TRANSACTIONS, data: data });
   console.log("State changed with newest transactions");
   toaster.updateSuccess('Transaction fetched')
