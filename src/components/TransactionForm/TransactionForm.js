@@ -46,7 +46,7 @@ export function TransactionForm(props) {
   return (
         <MaterialUIForm onSubmit={handleFormSubmission}>
           <Grid container alignItems="center" spacing={2}>
-            <Grid item xs={2}>
+            <Grid item xs={12} md={2}>
               <TextField
                 required
                 id="transaction-form-amount"
@@ -63,7 +63,7 @@ export function TransactionForm(props) {
                 error={!isAmountValid(amount)}
               />
             </Grid>
-            <Grid item xs={7}>
+            <Grid item xs={12} md={7}>
               <TextField
                 required
                 id="transaction-form-title"
@@ -80,7 +80,7 @@ export function TransactionForm(props) {
                 error={!isTitleValid(title)}
               />
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={12} md={3}>
               <Button
                 type="submit"
                 className={sharedStyles.fullWidth}

@@ -11,7 +11,7 @@ function ConversionsGrid(props) {
   const sharedStyles = useSharedStyles();
   function renderPanel(conversion, index) {
     return (
-      <Grid item key={`${conversion}-container-${index}`} xs={2} md={6} lg={4}>
+      <Grid item key={`${conversion}-container-${index}`} xs={3} md={6} lg={4}>
         <ConversionInput
           currency={conversion}
           rate={Number(rates[conversion])}

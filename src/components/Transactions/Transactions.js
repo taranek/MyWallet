@@ -9,7 +9,6 @@ import Grid from '@material-ui/core/Grid';
 import propTypes from 'prop-types';
 
 export function Transactions(props) {
-  const loading = props.loading;
   const transactions = props.transactions;
   const sharedStyles = useSharedStyles();
 
@@ -26,7 +25,7 @@ export function Transactions(props) {
       </Grid>
 
       <h3>History</h3>
-      <TransactionListWithLoading loading={transactions===null || transactions == undefined} />
+      <TransactionListWithLoading loading={transactions===null || transactions === undefined} />
     </Paper>
   );
 }

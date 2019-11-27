@@ -9,7 +9,7 @@ import amountPipe from "pipes/amountPipe";
 export function AccountSummary(props) {
   const internalStyles = styles();
   const sharedStyles = useSharedStyles();
-  const isThereAnyTransaction = props.transactions!=undefined && props.transactions.length !== 0;
+  const isThereAnyTransaction = props.transactions!==undefined && props.transactions.length !== 0;
   const highest = isThereAnyTransaction
     ? getHighestTransaction().amount
     : amountPipe(0);

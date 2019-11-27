@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import { MuiThemeProvider, createMuiTheme } from "@material-ui/core";
 import AdminView from "./views/AdminView";
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const theme = createMuiTheme({});
 

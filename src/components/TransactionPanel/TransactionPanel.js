@@ -47,26 +47,26 @@ export function TransactionPanel(props) {
         id={"panel-header-" + index}
       >
         <Grid container>
-          <Grid item xs={2}>
+          <Grid item xs={6} md={2}>
             <TransactionAmount
               amount={transaction.amount}
               currency={transaction.base}
             ></TransactionAmount>
           </Grid>
-          <Grid item xs={2}>
+          <Grid item xs={6} md={2}>
             <TransactionAmount
               amount={targetRate * transaction.amount}
               currency={targetCurrency}
             ></TransactionAmount>
           </Grid>
-          <Grid item xs={8} className={sharedStyles.textBold}>
+          <Grid item  xs={9} md={8} className={sharedStyles.textBold}>
             {transaction.title}
           </Grid>
         </Grid>
       </ExpansionPanelSummary>
       <ExpansionPanelDetails>
         <Grid container display="flex" alignContent="center" spacing={1}>
-          <Grid item xs={5}>
+          <Grid item xs={12} md={5}>
             <TextField
               id={"timestamp-" + index}
               label="Timestamp"
@@ -76,7 +76,7 @@ export function TransactionPanel(props) {
               variant="outlined"
             />
           </Grid>
-          <Grid item xs={5}>
+          <Grid item xs={12} md={5}>
             <TextField
               id={"person-" + index}
               label={assignFromToLabel(transaction.amount)}
@@ -92,7 +92,8 @@ export function TransactionPanel(props) {
             display="flex"
             alignItems="center"
             justify="flex-end"
-            xs={2}
+            xs={12}
+            md={2}
           >
             <Button
               color="secondary"
