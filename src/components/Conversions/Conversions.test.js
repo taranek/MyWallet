@@ -8,17 +8,17 @@ describe("Conversions component tests", () => {
   describe("Redux", () => {
     it("Should map state to props correctly", () => {
       const appState = {
-        loading:true
+        rates: { CAD: 1.4608, HKD: 8.6361, PLN: 4.5 },
       };
       const props = {};
       const componentState = mapStateToProps(appState, props);
       expect(componentState).toEqual(appState);
     });
   });
-  describe("Render properly when loading", () => {
+  describe("Render properly when rates are null", () => {
     let tree = null;
     const appState = {
-      loading:true,
+      rates:null,
     };
     function myReducer(state = appState, action) {
       return state;
@@ -43,11 +43,7 @@ describe("Conversions component tests", () => {
     let tree = null;
 
     const appState = {
-      loading:false,
-      rates: {
-        CHF:1.23,
-        EUR:4.22
-      }
+      rates: { CAD: 1.4608, HKD: 8.6361, PLN: 4.5 },
     };
     function myReducer(state = appState, action) {
       return state;

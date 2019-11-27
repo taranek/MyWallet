@@ -7,17 +7,20 @@ import moment from 'moment';
 
 describe("TransactionPanel component tests", () => {
     const appState = {
-        targetCurrency: "PLN",
-        rates: { CAD: 1.4608, HKD: 8.6361, ISK: 135.9, PLN: 135.9  },
-        transaction: 
-          {
-            timestamp: moment([1996]),
-            amount: 100.0,
-            base: "EUR",
-            title: "My birthday gift!",
-            person: "Freddie Mercury"
-          },
+      
+      targetCurrency: "PLN",
+      rates: { CAD: 1.4608, HKD: 8.6361, PLN: 4.5 },
       };
+      const otherProps = {
+        transaction: 
+        {
+          timestamp: moment([1996]),
+          amount: 100.0,
+          base: "EUR",
+          title: "My birthday gift!",
+          person: "Freddie Mercury"
+        }
+      }
   describe("Redux", () => {
     it("Should map state to props correctly", () => {
       const props = {};
@@ -34,7 +37,7 @@ describe("TransactionPanel component tests", () => {
     beforeEach(() => {
       tree = renderer.create(
         <Provider store={createStore(myReducer)}>
-          <TransactionPanel index={1}></TransactionPanel>
+          <TransactionPanel index={1} transaction={otherProps.transaction}></TransactionPanel>
         </Provider>
       );
     });

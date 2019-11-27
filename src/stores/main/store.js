@@ -9,7 +9,6 @@ const getStore = () => {
   const middlewares = [sagaMiddleware];
   const composables = [applyMiddleware(...middlewares)];
   const enhancer = compose(...composables);
-
   const store = createStore(mainReducer, defaultState, enhancer);
   initSagas(sagaMiddleware);
   return store;

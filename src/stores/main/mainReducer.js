@@ -1,5 +1,5 @@
 import defaultState from "stores/main/defaultState";
-export default function amount(state = defaultState, action) {
+export default function mainReducer(state = defaultState, action) {
   switch (action.type) {
     case "CHANGE_RATE":
       return {
@@ -10,7 +10,12 @@ export default function amount(state = defaultState, action) {
       return {
         ...state,
         rates: action.data,
-        loading: false
+      };
+    case "SET_TRANSACTIONS":
+      console.log('Data from reducer:',action.data);
+      return {
+        ...state,
+        transactions: action.data,
       };
     case "CHANGE_TARGET":
       return {

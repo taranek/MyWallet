@@ -4,11 +4,13 @@
   "private": true,
   "dependencies": {
     "@material-ui/icons": "^4.5.1",
+    "glamor": "^2.20.40",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-material-ui-form": "^1.1.4",
-    "react-scripts": "3.2.0"
+    "react-scripts": "3.2.0",
+    "react-toastify": "^5.4.1"
   },
   "scripts": {
     "start": "react-scripts start",

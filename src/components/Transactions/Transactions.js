@@ -10,6 +10,7 @@ import propTypes from 'prop-types';
 
 export function Transactions(props) {
   const loading = props.loading;
+  const transactions = props.transactions;
   const sharedStyles = useSharedStyles();
 
   const TransactionListWithLoading = withLoading(TransactionsList);
@@ -25,13 +26,14 @@ export function Transactions(props) {
       </Grid>
 
       <h3>History</h3>
-      <TransactionListWithLoading loading={loading} />
+      <TransactionListWithLoading loading={transactions===null || transactions == undefined} />
     </Paper>
   );
 }
 export function mapStateToProps(state) {
   return {
-    loading: state.loading
+    loading: state.loading,
+    transactions:state.transactions
   };
 }
 export default connect(mapStateToProps)(Transactions);

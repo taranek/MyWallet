@@ -3,12 +3,28 @@ import renderer from "react-test-renderer";
 import Bar, { mapStateToProps } from "./Bar";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
+import moment from 'moment';
 
 describe("Bar component tests", () => {
   describe("Redux", () => {
     it("Should map state to props correctly", () => {
       const appState = {
-        loading:true
+        transactions: [
+          {
+            timestamp: moment([1996]),
+            amount: 100.0,
+            base: "EUR",
+            title: "My birthday gift!",
+            person: "Freddie Mercury"
+          },
+          {
+            timestamp: moment([2014]),
+            amount: -45.0,
+            base: "EUR",
+            title: "Beers with friends",
+            person: "Linus Torvalds"
+          }
+        ],
       };
       const props = {};
       const componentState = mapStateToProps(appState, props);
@@ -18,7 +34,7 @@ describe("Bar component tests", () => {
   describe("Render properly when loading", () => {
     let tree = null;
     const appState = {
-      loading:true,
+      transactions:null
     };
     function myReducer(state = appState, action) {
       return state;
@@ -42,7 +58,22 @@ describe("Bar component tests", () => {
   describe("Render properly after loading", () => {
     let tree = null;
     const appState = {
-      loading:false,
+      transactions: [
+        {
+          timestamp: moment([1996]),
+          amount: 100.0,
+          base: "EUR",
+          title: "My birthday gift!",
+          person: "Freddie Mercury"
+        },
+        {
+          timestamp: moment([2014]),
+          amount: -45.0,
+          base: "EUR",
+          title: "Beers with friends",
+          person: "Linus Torvalds"
+        }
+      ],
     };
     function myReducer(state = appState, action) {
       return state;

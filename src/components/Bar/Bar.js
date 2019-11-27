@@ -5,17 +5,17 @@ import { connect } from "react-redux";
 import withLoading from "hoc/withLoading";
 
 export function Bar(props) {
-  const loading = props.loading;
+  const transactions = props.transactions;
   const ToolBarWithLoading = withLoading(Toolbar)
   return (
     <AppBar>
-      <ToolBarWithLoading loading={loading}>{props.children}</ToolBarWithLoading>
+      <ToolBarWithLoading loading={transactions===null}>{props.children}</ToolBarWithLoading>
     </AppBar>
   );
 }
 export function mapStateToProps(state) {
   return {
-    loading: state.loading
+    transactions: state.transactions
   };
 }
 export default connect(mapStateToProps)(Bar);

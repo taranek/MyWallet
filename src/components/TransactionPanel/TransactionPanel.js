@@ -111,7 +111,7 @@ export function TransactionPanel(props) {
 export function mapStateToProps(state) {
   return {
     targetCurrency: state.targetCurrency,
-    rates: state.rates
+    rates: state.rates,
   };
 }
 export default connect(mapStateToProps)(TransactionPanel);
