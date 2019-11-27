@@ -1,11 +1,11 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
-import useSharedStyles from "../styles/sharedStyles";
+import useSharedStyles from "styles/sharedStyles";
 import store from "stores/main/store";
-import Bar from "../components/Bar/Bar";
+import Bar from "components/Bar/Bar";
 import Typography from "@material-ui/core/Typography";
 import { Provider } from "react-redux";
-import AccountSummary from "../components/AccountSummary/AccountSummary";
+import AccountSummary from "components/AccountSummary/AccountSummary";
 import Box from "@material-ui/core/Box";
 import Conversions from "components/Conversions/Conversions";
 import Transactions from "components/Transactions/Transactions";
