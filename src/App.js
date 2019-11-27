@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const theme = createMuiTheme({});
 
 function App() {
+  console.log('Updated app');
   console.log('rates api:',process.env.REACT_APP_RATES_API);
   return (
     <React.Fragment>
