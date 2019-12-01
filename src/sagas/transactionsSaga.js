@@ -45,6 +45,13 @@ export function* transactionsSaga() {
   }
 }
 function getApiUrl(){
-  if (process.env.NODE_ENV !== 'development') return process.env.REACT_APP_MY_WALLET_API_PROD;
-  return process.env.REACT_APP_MY_WALLET_API_DEV;
+  console.log('ENV:',process.env.NODE_ENV);
+  if (process.env.NODE_ENV === 'development'){
+    console.log('In dev env');
+    return process.env.REACT_APP_MY_WALLET_API_DEV;
+  }
+  else{
+    console.log('Non dev env');  
+    return process.env.REACT_APP_MY_WALLET_API_PROD;
+  }
 }
