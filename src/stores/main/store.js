@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware, compose, combineReducers } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 import transactionsReducer from 'stores/transactions/transactionsReducer';
 import ratesReducer from 'stores/rates/ratesReducer';
 import createSagaMiddleWare from "redux-saga";
@@ -13,8 +13,7 @@ function getStore(){
   const enhancer = compose(...composables);
   const reduced = reduceReducers(transactionsReducer,ratesReducer);
   const store = createStore(reduced,defaultState, enhancer);
-  initSagas(sagaMiddleware);
-  console.log('getStore returns:',store.getState());
+  initSagas(sagaMiddleware);  
   return store;
 };
 

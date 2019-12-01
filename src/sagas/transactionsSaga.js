@@ -1,14 +1,44 @@
-import { delay, put, call, apply } from "redux-saga/effects";
+import { put, call, apply } from "redux-saga/effects";
 import fetch from "isomorphic-fetch";
 import {SET_TRANSACTIONS} from "stores/transactions/transactionsActions";
 import Toaster from 'toaster/toaster';
 
+let mockedTransactions = [
+  {
+    _id:'1',
+    timestamp: '1995-12-31T23:00:00.000Z',
+    amount: 100.0,
+    base: "EUR",
+    title: "My birthday gift!",
+    person: "Freddie Mercury"
+  },
+  {
+    _id:'2',
+    timestamp: '2013-12-31T23:00:00.000Z',
+    amount: -45.0,
+    base: "EUR",
+    title: "Beers with friends",
+    person: "Linus Torvalds"
+  }
+];
+
 export function* transactionsSaga() {
   let toaster = new Toaster('TransactionToaster');
+  let response = null;
+  let data = null;
+  console.log("Starting fetching rates...");
   yield toaster.inProgress('Fetching transactions...')
-  const response = yield call(fetch, `${process.env.REACT_APP_MY_WALLET_API}/transactions`);
-  const data = yield apply(response, response.json);
-  yield put({ type: SET_TRANSACTIONS, data: data });
-  console.log("State changed with newest transactions");
-  yield toaster.updateSuccess('Transaction fetched')
+  try {
+    response = yield call(fetch, `${process.env.REACT_APP_MY_WALLET_API}/transactions`);
+    data = yield apply(response, response.json);
+    yield toaster.updateSuccess('Transaction fetched')
+  }
+  catch(err){
+    data = mockedTransactions;
+    yield toaster.updateError(`Unable to fetch transactions. Mocked some for you. Error:${err}`)
+  }
+  finally{
+    yield put({ type: SET_TRANSACTIONS, data: data });
+    console.log("State changed with newest transactions");
+  }
 }

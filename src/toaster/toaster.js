@@ -1,4 +1,4 @@
-import { toast , } from 'react-toastify';
+import { toast  } from 'react-toastify';
 import { css } from 'glamor'; 
 
 export default class Toaster{
@@ -8,7 +8,7 @@ export default class Toaster{
     this.transitionClass = css({
       transform: "rotateY(360deg)",
       transition: "transform 0.6s"
-    }) ;
+    });
   }
   info(msg){
     toast(msg, {type: toast.TYPE.INFO, autoClose: this.timeOut, toastId:this.toastId });
