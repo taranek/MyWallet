@@ -7,7 +7,7 @@ import TextField from "@material-ui/core/TextField";
 import useSharedStyles from "styles/sharedStyles";
 import { connect } from "react-redux";
 import amountPipe from "pipes/amountPipe";
-import {ADD_TRANSACTION} from "stores/main/actions";
+import {ADD_TRANSACTION} from "stores/transactions/transactionsActions";
 import propTypes from 'prop-types';
 
 export function TransactionForm(props) {

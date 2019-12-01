@@ -27,12 +27,12 @@ export function TransactionsList(props) {
           targetCurrency={targetCurrency}
         ></TransactionListHeader>
       </Paper>
-      {transactions.map((transaction, i) => {
+      {transactions.map((t, i) => {
         return (
           <TransactionPanel
-            transaction={transaction}
-            key={transaction.timestamp}
-            index={i}
+            transaction={t}
+            key={t._id}
+            index={t._id}
           ></TransactionPanel>
         );
       })}

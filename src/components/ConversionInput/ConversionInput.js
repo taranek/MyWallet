@@ -4,7 +4,7 @@ import amountPipe from "pipes/amountPipe";
 import { connect } from "react-redux";
 import styles from "./styles";
 import PropTypes from "prop-types";
-import {CHANGE_RATE} from "stores/main/actions";
+import {CHANGE_RATE} from "stores/rates/ratesActions";
 
 export function ConversionInput(props) {
   const currency = props.currency;

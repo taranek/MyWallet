@@ -10,7 +10,7 @@ import useSharedStyles from "styles/sharedStyles";
 import { connect } from "react-redux";
 import TextField from "@material-ui/core/TextField";
 import TransactionAmount from "components/TransactionAmount/TransactionAmount";
-import {DELETE_TRANSACTION } from "stores/main/actions";
+import {DELETE_TRANSACTION } from "stores/transactions/transactionsActions";
 import propTypes from 'prop-types';
 
 export function TransactionPanel(props) {
@@ -118,7 +118,7 @@ export function mapStateToProps(state) {
 export default connect(mapStateToProps)(TransactionPanel);
 
 TransactionPanel.propTypes = {
-  index: propTypes.number,
+  index: propTypes.string,
   transaction: propTypes.object,
   targetCurrency: propTypes.string,
   rates: propTypes.object,

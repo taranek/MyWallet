@@ -9,7 +9,7 @@ export function Bar(props) {
   const ToolBarWithLoading = withLoading(Toolbar)
   return (
     <AppBar>
-      <ToolBarWithLoading loading={transactions===null}>{props.children}</ToolBarWithLoading>
+      <ToolBarWithLoading loading={transactions===null || transactions===undefined}>{props.children}</ToolBarWithLoading>
     </AppBar>
   );
 }

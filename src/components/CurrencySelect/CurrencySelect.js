@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import useSharedStyles from "styles/sharedStyles";
 import Paper from "@material-ui/core/Paper";
 import styles from "./styles";
-import {CHANGE_TARGET} from "stores/main/actions";
+import {CHANGE_TARGET} from "stores/rates/ratesActions";
 export function CurrencySelect(props) {
   const classes = styles();
   const sharedStyles = useSharedStyles();
@@ -27,7 +27,7 @@ export function CurrencySelect(props) {
       data: event.target.value
     });
   };
-
+  console.log('Currency select invoked with rates:',props.rates)
   return (
     <Paper className={sharedStyles.paper}>
       <FormControl variant="outlined" className={classes.formControl}>

@@ -1,2 +1,7 @@
-export { ratesSaga } from "./ratesSaga";
-export { transactionsSaga } from "./transactionsSaga";
+import { ratesSaga } from "./ratesSaga";
+import { transactionsSaga } from "./transactionsSaga";
+
+export default function* mainSaga(){
+  yield* ratesSaga();
+  yield* transactionsSaga();
+}

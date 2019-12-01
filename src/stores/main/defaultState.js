@@ -1,5 +1,3 @@
-
-
 let defaultState = {
   // loading: true,
   base: "EUR",
