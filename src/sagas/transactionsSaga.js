@@ -23,13 +23,15 @@ let mockedTransactions = [
 ];
 
 export function* transactionsSaga() {
+  let myWalletAPI = getApiUrl();
   let toaster = new Toaster('TransactionToaster');
   let response = null;
   let data = null;
-  console.log("Starting fetching rates...");
+  console.log("Starting fetching transactions...");
+
   yield toaster.inProgress('Fetching transactions...')
   try {
-    response = yield call(fetch, `${process.env.REACT_APP_MY_WALLET_API}/transactions`);
+    response = yield call(fetch, `${myWalletAPI}/transactions`);
     data = yield apply(response, response.json);
     yield toaster.updateSuccess('Transaction fetched')
   }
@@ -41,4 +43,8 @@ export function* transactionsSaga() {
     yield put({ type: SET_TRANSACTIONS, data: data });
     console.log("State changed with newest transactions");
   }
+}
+function getApiUrl(){
+  if (process.env.NODE_ENV === 'development') return process.env.REACT_APP_MY_WALLET_API_DEV;
+  return process.env.REACT_APP_MY_WALLET_API_PROD;
 }

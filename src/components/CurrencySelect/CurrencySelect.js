@@ -27,7 +27,6 @@ export function CurrencySelect(props) {
       data: event.target.value
     });
   };
-  console.log('Currency select invoked with rates:',props.rates)
   return (
     <Paper className={sharedStyles.paper}>
       <FormControl variant="outlined" className={classes.formControl}>

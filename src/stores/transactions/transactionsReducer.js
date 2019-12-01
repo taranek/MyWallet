@@ -24,6 +24,6 @@ export default function transactionsReducer(state = defaultState, action) {
   }
 }
 
-function removeElement(arr, timestampToRemove) {
-  return arr.filter(el => el !== timestampToRemove);
+function removeElement(arr, elementToRemove) {
+  return arr.filter(el => el !== elementToRemove);
 }

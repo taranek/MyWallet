@@ -1,5 +1,4 @@
 let defaultState = {
-  // loading: true,
   base: "EUR",
   targetCurrency: "PLN",
   rates: null,

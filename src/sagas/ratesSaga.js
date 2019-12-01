@@ -24,10 +24,4 @@ export function* ratesSaga() {
     yield put({ type: SET_RATES, data: data.rates });
     console.log("State changed with newest rates");
   }
-    
-    
-
-    
-    
-    
 }
