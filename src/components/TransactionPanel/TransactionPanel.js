@@ -10,8 +10,8 @@ import useSharedStyles from "styles/sharedStyles";
 import { connect } from "react-redux";
 import TextField from "@material-ui/core/TextField";
 import TransactionAmount from "components/TransactionAmount/TransactionAmount";
-import {DELETE_TRANSACTION } from "stores/transactions/transactionsActions";
-import propTypes from 'prop-types';
+import { DELETE_TRANSACTION } from "stores/transactions/transactionsActions";
+import propTypes from "prop-types";
 
 export function TransactionPanel(props) {
   const sharedStyles = useSharedStyles();
@@ -21,9 +21,9 @@ export function TransactionPanel(props) {
   const targetRate = props.rates[targetCurrency];
 
   const [expanded, setExpanded] = React.useState(false);
-  
+
   const isAmountPositive = amount => amount > 0;
-  
+
   const assignFromToLabel = amount => {
     return isAmountPositive(amount) ? "Received from" : "Sent to";
   };
@@ -59,7 +59,7 @@ export function TransactionPanel(props) {
               currency={targetCurrency}
             ></TransactionAmount>
           </Grid>
-          <Grid item  xs={9} md={8} className={sharedStyles.textBold}>
+          <Grid item xs={9} md={8} className={sharedStyles.textBold}>
             {transaction.title}
           </Grid>
         </Grid>
@@ -112,7 +112,7 @@ export function TransactionPanel(props) {
 export function mapStateToProps(state) {
   return {
     targetCurrency: state.targetCurrency,
-    rates: state.rates,
+    rates: state.rates
   };
 }
 export default connect(mapStateToProps)(TransactionPanel);
@@ -121,5 +121,5 @@ TransactionPanel.propTypes = {
   index: propTypes.string,
   transaction: propTypes.object,
   targetCurrency: propTypes.string,
-  rates: propTypes.object,
-}
+  rates: propTypes.object
+};

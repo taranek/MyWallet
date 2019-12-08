@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import useSharedStyles from "styles/sharedStyles";
 import Paper from "@material-ui/core/Paper";
 import styles from "./styles";
-import {CHANGE_TARGET} from "stores/rates/ratesActions";
+import { CHANGE_TARGET } from "stores/rates/ratesActions";
 export function CurrencySelect(props) {
   const classes = styles();
   const sharedStyles = useSharedStyles();
@@ -16,7 +16,7 @@ export function CurrencySelect(props) {
 
   const inputLabel = React.useRef(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
-  
+
   React.useEffect(() => {
     setLabelWidth(inputLabel.current.offsetWidth);
   }, []);
@@ -28,7 +28,7 @@ export function CurrencySelect(props) {
     });
   };
   return (
-    <Paper className={sharedStyles.paper}>
+    <Paper className={[sharedStyles.paper, sharedStyles.my_2].join(" ")}>
       <FormControl variant="outlined" className={classes.formControl}>
         <InputLabel ref={inputLabel} htmlFor="target-currency-dropdown">
           Target Currency

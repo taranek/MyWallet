@@ -8,7 +8,7 @@ describe("Transactions component tests", () => {
   describe("Redux", () => {
     it("Should map state to props correctly", () => {
       const appState = {
-        loading:true
+        loading: true
       };
       const props = {};
       const componentState = mapStateToProps(appState, props);
@@ -18,7 +18,7 @@ describe("Transactions component tests", () => {
   describe("Render properly when loading", () => {
     let tree = null;
     const appState = {
-      loading:true,
+      loading: true
     };
     function myReducer(state = appState, action) {
       return state;
@@ -35,7 +35,7 @@ describe("Transactions component tests", () => {
       expect(component.children.length).toEqual(5);
     });
     it("Should display progress bar when loading", () => {
-      let progressBars = tree.root.findAllByProps({role:'progressbar'});
+      let progressBars = tree.root.findAllByProps({ role: "progressbar" });
       expect(progressBars.length).toEqual(1);
     });
   });

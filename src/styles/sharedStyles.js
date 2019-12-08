@@ -6,6 +6,10 @@ export default makeStyles(theme => ({
     padding: theme.spacing(2),
     textAlign: "left"
   },
+  my_2: {
+    marginTop: theme.spacing(2),
+    marginBottom: theme.spacing(2)
+  },
   lightBlue: {
     backgroundColor: blue[50]
   },
@@ -22,5 +26,5 @@ export default makeStyles(theme => ({
   },
   fullWidth: {
     width: "100%"
-  },
+  }
 }));

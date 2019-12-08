@@ -14,16 +14,20 @@ export function Conversions(props) {
   return (
     <Paper className={[sharedStyles.paper, sharedStyles.lightBlue].join(" ")}>
       <h2>Conversions</h2>
-      <CurrencySelectWithLoading loading={rates===null || rates===undefined}/>
+      <CurrencySelectWithLoading
+        loading={rates === null || rates === undefined}
+      />
       <Grid container display="flex" flex-direction="row ">
-        <ConversionGridWithLoading loading={rates===null || rates===undefined}/>
+        <ConversionGridWithLoading
+          loading={rates === null || rates === undefined}
+        />
       </Grid>
     </Paper>
   );
 }
 export function mapStateToProps(state) {
   return {
-    rates: state.rates,
+    rates: state.rates
   };
 }
 export default connect(mapStateToProps)(Conversions);

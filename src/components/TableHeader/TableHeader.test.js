@@ -5,13 +5,9 @@ import TableHeader from "./TableHeader";
 describe("TableHeader component tests", () => {
   describe("Render properly when all children are string", () => {
     let tree = null;
-    let text = "SomeText"
+    let text = "SomeText";
     beforeEach(() => {
-      tree = renderer.create(
-        <TableHeader>
-          {text}
-        </TableHeader>
-      );
+      tree = renderer.create(<TableHeader>{text}</TableHeader>);
     });
     it("Should contain one element", () => {
       let component = tree.toJSON();

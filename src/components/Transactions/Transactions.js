@@ -5,8 +5,8 @@ import useSharedStyles from "styles/sharedStyles";
 import withLoading from "hoc/withLoading";
 import TransactionsList from "components/TransactionsList/TransactionsList";
 import { connect } from "react-redux";
-import Grid from '@material-ui/core/Grid';
-import propTypes from 'prop-types';
+import Grid from "@material-ui/core/Grid";
+import propTypes from "prop-types";
 
 export function Transactions(props) {
   const transactions = props.transactions;
@@ -14,7 +14,13 @@ export function Transactions(props) {
 
   const TransactionListWithLoading = withLoading(TransactionsList);
   return (
-    <Paper className={[sharedStyles.paper, sharedStyles.lightBlue].join(" ")}>
+    <Paper
+      className={[
+        sharedStyles.paper,
+        sharedStyles.lightBlue,
+        sharedStyles.my_2
+      ].join(" ")}
+    >
       <h2>Transactions</h2>
       <h3>Create new</h3>
 
@@ -25,18 +31,20 @@ export function Transactions(props) {
       </Grid>
 
       <h3>History</h3>
-      <TransactionListWithLoading loading={transactions===null || transactions === undefined} />
+      <TransactionListWithLoading
+        loading={transactions === null || transactions === undefined}
+      />
     </Paper>
   );
 }
 export function mapStateToProps(state) {
   return {
     loading: state.loading,
-    transactions:state.transactions
+    transactions: state.transactions
   };
 }
 export default connect(mapStateToProps)(Transactions);
 
 Transactions.propTypes = {
-  loading: propTypes.bool,
-}
+  loading: propTypes.bool
+};

@@ -3,24 +3,22 @@ import renderer from "react-test-renderer";
 import TransactionPanel, { mapStateToProps } from "./TransactionPanel";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
-import moment from 'moment';
+import moment from "moment";
 
 describe("TransactionPanel component tests", () => {
-    const appState = {
-      
-      targetCurrency: "PLN",
-      rates: { CAD: 1.4608, HKD: 8.6361, PLN: 4.5 },
-      };
-      const otherProps = {
-        transaction: 
-        {
-          timestamp: moment([1996]),
-          amount: 100.0,
-          base: "EUR",
-          title: "My birthday gift!",
-          person: "Freddie Mercury"
-        }
-      }
+  const appState = {
+    targetCurrency: "PLN",
+    rates: { CAD: 1.4608, HKD: 8.6361, PLN: 4.5 }
+  };
+  const otherProps = {
+    transaction: {
+      timestamp: moment([1996]),
+      amount: 100.0,
+      base: "EUR",
+      title: "My birthday gift!",
+      person: "Freddie Mercury"
+    }
+  };
   describe("Redux", () => {
     it("Should map state to props correctly", () => {
       const props = {};
@@ -37,7 +35,10 @@ describe("TransactionPanel component tests", () => {
     beforeEach(() => {
       tree = renderer.create(
         <Provider store={createStore(myReducer)}>
-          <TransactionPanel index={1} transaction={otherProps.transaction}></TransactionPanel>
+          <TransactionPanel
+            index={1}
+            transaction={otherProps.transaction}
+          ></TransactionPanel>
         </Provider>
       );
     });
@@ -46,8 +47,8 @@ describe("TransactionPanel component tests", () => {
       expect(component.children.length).toEqual(2);
     });
     it("Should contain two labelled elements within the tree", () => {
-        let elements = tree.root.findAllByProps({label:"Timestamp"});
-        expect(elements.length).toEqual(2);
-      });
+      let elements = tree.root.findAllByProps({ label: "Timestamp" });
+      expect(elements.length).toEqual(2);
+    });
   });
 });

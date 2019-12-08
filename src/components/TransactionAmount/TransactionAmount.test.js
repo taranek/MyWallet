@@ -5,11 +5,11 @@ import TransactionAmount from "./TransactionAmount";
 describe("TableHeader component tests", () => {
   describe("Render properly when all children are string", () => {
     let tree = null;
-    let positiveAmount = 2.50;
+    let positiveAmount = 2.5;
     let currency = "EUR";
     beforeEach(() => {
       tree = renderer.create(
-        <TransactionAmount amount={positiveAmount} currency={currency}/>
+        <TransactionAmount amount={positiveAmount} currency={currency} />
       );
     });
     it("Should display value", () => {
@@ -22,7 +22,7 @@ describe("TableHeader component tests", () => {
     });
     it("Should assign className based on amount", () => {
       let props = tree.toJSON().props;
-      expect(props['className']).toContain('amountPlus');
+      expect(props["className"]).toContain("amountPlus");
     });
   });
 });

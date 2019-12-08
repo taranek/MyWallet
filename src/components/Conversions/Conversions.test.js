@@ -8,7 +8,7 @@ describe("Conversions component tests", () => {
   describe("Redux", () => {
     it("Should map state to props correctly", () => {
       const appState = {
-        rates: { CAD: 1.4608, HKD: 8.6361, PLN: 4.5 },
+        rates: { CAD: 1.4608, HKD: 8.6361, PLN: 4.5 }
       };
       const props = {};
       const componentState = mapStateToProps(appState, props);
@@ -18,7 +18,7 @@ describe("Conversions component tests", () => {
   describe("Render properly when rates are null", () => {
     let tree = null;
     const appState = {
-      rates:null,
+      rates: null
     };
     function myReducer(state = appState, action) {
       return state;
@@ -35,7 +35,7 @@ describe("Conversions component tests", () => {
       expect(component.children.length).toEqual(3);
     });
     it("Should display 2 progress bars when loading", () => {
-      let progressBars = tree.root.findAllByProps({role:'progressbar'});
+      let progressBars = tree.root.findAllByProps({ role: "progressbar" });
       expect(progressBars.length).toEqual(2);
     });
   });
@@ -43,7 +43,7 @@ describe("Conversions component tests", () => {
     let tree = null;
 
     const appState = {
-      rates: { CAD: 1.4608, HKD: 8.6361, PLN: 4.5 },
+      rates: { CAD: 1.4608, HKD: 8.6361, PLN: 4.5 }
     };
     function myReducer(state = appState, action) {
       return state;
@@ -56,7 +56,7 @@ describe("Conversions component tests", () => {
       );
     });
     it("Should not display progress bards after loading", () => {
-      let progressBars = tree.root.findAllByProps({role:'progressbar'});
+      let progressBars = tree.root.findAllByProps({ role: "progressbar" });
       expect(progressBars.length).toEqual(0);
     });
   });

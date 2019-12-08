@@ -9,6 +9,7 @@ import AccountSummary from "components/AccountSummary/AccountSummary";
 import Box from "@material-ui/core/Box";
 import Conversions from "components/Conversions/Conversions";
 import Transactions from "components/Transactions/Transactions";
+import CurrencyDetails from "components/CurrencyDetails/CurrencyDetails";
 export default function CenteredGrid() {
   const sharedStyles = useSharedStyles();
 
@@ -30,6 +31,7 @@ export default function CenteredGrid() {
       <Box p={2} my={5} py={5}>
         <Grid container spacing={3}>
           <Grid item xs={12} md={9}>
+            <CurrencyDetails></CurrencyDetails>
             <Transactions></Transactions>
           </Grid>
           <Grid item xs={12} md={3}>

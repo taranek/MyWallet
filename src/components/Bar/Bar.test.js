@@ -3,7 +3,7 @@ import renderer from "react-test-renderer";
 import Bar, { mapStateToProps } from "./Bar";
 import { Provider } from "react-redux";
 import { createStore } from "redux";
-import moment from 'moment';
+import moment from "moment";
 
 describe("Bar component tests", () => {
   describe("Redux", () => {
@@ -24,7 +24,7 @@ describe("Bar component tests", () => {
             title: "Beers with friends",
             person: "Linus Torvalds"
           }
-        ],
+        ]
       };
       const props = {};
       const componentState = mapStateToProps(appState, props);
@@ -34,7 +34,7 @@ describe("Bar component tests", () => {
   describe("Render properly when loading", () => {
     let tree = null;
     const appState = {
-      transactions:null
+      transactions: null
     };
     function myReducer(state = appState, action) {
       return state;
@@ -73,7 +73,7 @@ describe("Bar component tests", () => {
           title: "Beers with friends",
           person: "Linus Torvalds"
         }
-      ],
+      ]
     };
     function myReducer(state = appState, action) {
       return state;

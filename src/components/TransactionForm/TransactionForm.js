@@ -7,8 +7,8 @@ import TextField from "@material-ui/core/TextField";
 import useSharedStyles from "styles/sharedStyles";
 import { connect } from "react-redux";
 import amountPipe from "pipes/amountPipe";
-import {ADD_TRANSACTION} from "stores/transactions/transactionsActions";
-import propTypes from 'prop-types';
+import { ADD_TRANSACTION } from "stores/transactions/transactionsActions";
+import propTypes from "prop-types";
 
 export function TransactionForm(props) {
   const sharedStyles = useSharedStyles();
@@ -20,7 +20,7 @@ export function TransactionForm(props) {
     if (isTitleValid(title) && isAmountValid(amount)) {
       setAmount(amount);
       setTitle(title);
-      
+
       props.dispatch({
         type: ADD_TRANSACTION,
         data: {
@@ -37,61 +37,61 @@ export function TransactionForm(props) {
   }
   const isNullOrWhitespace = string =>
     string === null || string.trim().length === 0;
-  
-    const isAmountValid = amount =>
+
+  const isAmountValid = amount =>
     amount !== null && !isNaN(amount) && amount !== 0.0;
-  
-    const isTitleValid = title => title !== null && title.length < titleMaxLength;
+
+  const isTitleValid = title => title !== null && title.length < titleMaxLength;
 
   return (
-        <MaterialUIForm onSubmit={handleFormSubmission}>
-          <Grid container alignItems="center" spacing={2}>
-            <Grid item xs={12} md={2}>
-              <TextField
-                required
-                id="transaction-form-amount"
-                label="EUR"
-                value={amount}
-                onChange={e => {
-                  !isNullOrWhitespace(e.target.value)
-                    ? setAmount(e.target.value)
-                    : setAmount("");
-                }}
-                className={sharedStyles.fullWidth}
-                margin="dense"
-                variant="outlined"
-                error={!isAmountValid(amount)}
-              />
-            </Grid>
-            <Grid item xs={12} md={7}>
-              <TextField
-                required
-                id="transaction-form-title"
-                label="Title"
-                value={title}
-                onChange={e => {
-                  !isNullOrWhitespace(e.target.value)
-                    ? setTitle(e.target.value)
-                    : setTitle("");
-                }}
-                className={sharedStyles.fullWidth}
-                margin="dense"
-                variant="outlined"
-                error={!isTitleValid(title)}
-              />
-            </Grid>
-            <Grid item xs={12} md={3}>
-              <Button
-                type="submit"
-                className={sharedStyles.fullWidth}
-                color="primary"
-                variant="contained"
-              >
-                Add transaction
-              </Button>
-            </Grid>
-          </Grid>
-        </MaterialUIForm>
+    <MaterialUIForm onSubmit={handleFormSubmission}>
+      <Grid container alignItems="center" spacing={2}>
+        <Grid item xs={12} md={2}>
+          <TextField
+            required
+            id="transaction-form-amount"
+            label="EUR"
+            value={amount}
+            onChange={e => {
+              !isNullOrWhitespace(e.target.value)
+                ? setAmount(e.target.value)
+                : setAmount("");
+            }}
+            className={sharedStyles.fullWidth}
+            margin="dense"
+            variant="outlined"
+            error={!isAmountValid(amount)}
+          />
+        </Grid>
+        <Grid item xs={12} md={7}>
+          <TextField
+            required
+            id="transaction-form-title"
+            label="Title"
+            value={title}
+            onChange={e => {
+              !isNullOrWhitespace(e.target.value)
+                ? setTitle(e.target.value)
+                : setTitle("");
+            }}
+            className={sharedStyles.fullWidth}
+            margin="dense"
+            variant="outlined"
+            error={!isTitleValid(title)}
+          />
+        </Grid>
+        <Grid item xs={12} md={3}>
+          <Button
+            type="submit"
+            className={sharedStyles.fullWidth}
+            color="primary"
+            variant="contained"
+          >
+            Add transaction
+          </Button>
+        </Grid>
+      </Grid>
+    </MaterialUIForm>
   );
 }
 
@@ -102,7 +102,7 @@ export function mapStateToProps(state) {
 }
 
 TransactionForm.propTypes = {
-  transactions:propTypes.array
-}
+  transactions: propTypes.array
+};
 
 export default connect(mapStateToProps)(TransactionForm);

@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import Paper from "@material-ui/core/Paper";
 import TransactionPanel from "components/TransactionPanel/TransactionPanel";
 import TransactionListHeader from "components/TransactionListHeader/TransactionListHeader";
-import propTypes from 'prop-types';
+import propTypes from "prop-types";
 
 export function TransactionsList(props) {
   const transactions = props.transactions;
@@ -49,10 +49,10 @@ export function mapStateToProps(state) {
   };
 }
 TransactionsList.propTypes = {
-  transactions:propTypes.array,
-  base:propTypes.string,
-  rates:propTypes.object,
-  targetCurrency:propTypes.string,  
-}
+  transactions: propTypes.array,
+  base: propTypes.string,
+  rates: propTypes.object,
+  targetCurrency: propTypes.string
+};
 
 export default connect(mapStateToProps)(TransactionsList);

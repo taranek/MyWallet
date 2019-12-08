@@ -10,7 +10,7 @@ export default function ratesReducer(state = defaultState, action) {
     case "SET_RATES":
       return {
         ...state,
-        rates: action.data,
+        rates: action.data
       };
     case "CHANGE_TARGET":
       return {

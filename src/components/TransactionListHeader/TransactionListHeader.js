@@ -1,7 +1,7 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
 import TableHeader from "components/TableHeader/TableHeader";
-import propTypes from 'prop-types';
+import propTypes from "prop-types";
 
 export default function TransactionListHeader(props) {
   const base = props.base;
@@ -25,6 +25,6 @@ export default function TransactionListHeader(props) {
 }
 
 TransactionListHeader.propTypes = {
-  base:propTypes.string,
-  targetCurrency:propTypes.string,
-}
+  base: propTypes.string,
+  targetCurrency: propTypes.string
+};

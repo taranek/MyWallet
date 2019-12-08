@@ -4,7 +4,7 @@ import Paper from "@material-ui/core/Paper";
 import useSharedStyles from "styles/sharedStyles";
 import { connect } from "react-redux";
 import ConversionInput from "components/ConversionInput/ConversionInput";
-import propTypes from 'prop-types';
+import propTypes from "prop-types";
 function ConversionsGrid(props) {
   const rates = props.rates;
   const conversions = Object.keys(rates);
@@ -34,6 +34,6 @@ function mapStateToProps(state) {
   };
 }
 ConversionsGrid.propTypes = {
-  rates:propTypes.object,
-}
+  rates: propTypes.object
+};
 export default connect(mapStateToProps)(ConversionsGrid);

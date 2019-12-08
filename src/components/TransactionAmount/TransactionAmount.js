@@ -1,7 +1,7 @@
 import React from "react";
 import amountPipe from "pipes/amountPipe";
 import useSharedStyles from "styles/sharedStyles";
-import styles from './styles';
+import styles from "./styles";
 import PropTypes from "prop-types";
 
 export default function TransactionAmount(props) {
@@ -19,7 +19,7 @@ export default function TransactionAmount(props) {
     </div>
   );
 }
-TransactionAmount.propTypes={
-  amount:PropTypes.number,
-  currency:PropTypes.string,
-}
+TransactionAmount.propTypes = {
+  amount: PropTypes.number,
+  currency: PropTypes.string
+};

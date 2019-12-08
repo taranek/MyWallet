@@ -8,9 +8,9 @@ describe("ConversionInput component tests", () => {
   describe("Redux", () => {
     it("Should map state to props correctly", () => {
       const appState = {
-        targetCurrency:'PLN',
-        rates:{
-          PLN:1.20
+        targetCurrency: "PLN",
+        rates: {
+          PLN: 1.2
         }
       };
       const props = {};
@@ -21,11 +21,10 @@ describe("ConversionInput component tests", () => {
   describe("Render properly", () => {
     let tree = null;
     let currency = "CHF";
-    let value = 2.30;
+    let value = 2.3;
     let morePrecisedValue = 2.301232;
     let lessPrecisedValue = 2.3;
-    const appState = {
-    };
+    const appState = {};
     function myReducer(state = appState, action) {
       return state;
     }
@@ -37,19 +36,19 @@ describe("ConversionInput component tests", () => {
       );
     });
     it("Should contain label with currency name", () => {
-      let label  = tree.root.findByType('label').props.htmlFor;
+      let label = tree.root.findByType("label").props.htmlFor;
       expect(label).toEqual(currency);
     });
     it("Should display value", () => {
-      let displayedValue  = tree.root.findByType('input').props.value
+      let displayedValue = tree.root.findByType("input").props.value;
       expect(Number(displayedValue)).toEqual(Number(value));
     });
     it("Should display value with 2 decimal places precision - more precise value", () => {
-      let displayedValue  = tree.root.findByType('input').props.value
+      let displayedValue = tree.root.findByType("input").props.value;
       expect(displayedValue).toEqual(Number(morePrecisedValue).toFixed(2));
     });
     it("Should display value with 2 decimal places precision - less precise value", () => {
-      let displayedValue  = tree.root.findByType('input').props.value
+      let displayedValue = tree.root.findByType("input").props.value;
       expect(displayedValue).toEqual(Number(lessPrecisedValue).toFixed(2));
     });
   });

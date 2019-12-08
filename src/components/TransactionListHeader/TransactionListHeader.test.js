@@ -9,12 +9,12 @@ describe("TransactionListHeader component tests", () => {
     let currency = "EUR";
     beforeEach(() => {
       tree = renderer.create(
-        <TransactionListHeader base={base} targetCurrency={currency}/>
+        <TransactionListHeader base={base} targetCurrency={currency} />
       );
     });
     it("Should render 4 columns", () => {
       let children = tree.toJSON().children;
-      expect(children.length).toEqual(4)
+      expect(children.length).toEqual(4);
     });
   });
 });
