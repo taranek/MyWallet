@@ -3,8 +3,6 @@ import defaultState from "stores/main/defaultState";
 export default function transactionsReducer(state = defaultState, action) {
   switch (action.type) {
     case "SET_TRANSACTIONS":
-      console.log("Data from reducer:", action.data);
-      console.log(state);
       return {
         ...state,
         transactions: action.data

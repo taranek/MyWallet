@@ -31,10 +31,10 @@ export function ConversionInput(props) {
       label={currency}
       value={amountPipe(rate)}
       onChange={e => handleChange(e)}
-      type="number"
       className={currency === targetCurrency ? classes.targetCurrency : null}
       InputLabelProps={{
-        shrink: true
+        shrink: true,
+        readOnly:true,
       }}
       margin="none"
       variant="standard"

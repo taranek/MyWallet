@@ -1,8 +1,7 @@
 import React from "react";
-import Grid from "@material-ui/core/Grid";
+import useSharedStyles from 'styles/sharedStyles';
 import amountPipe from "pipes/amountPipe";
-import propTypes from "prop-types";
-import { connect } from "react-redux";
+import Paper from '@material-ui/core/Paper';
 import {
   AreaChart,
   Area,
@@ -15,8 +14,11 @@ import {
 
 export default function CurrencyTrendChart(props) {
   const data = props.data;
+  const sharedStyles = useSharedStyles();
   const currency = props.currency;
   return (
+    <Paper className={[sharedStyles.paper].join(" ")}>
+    <h3>Last year</h3>
     <ResponsiveContainer height={400}>
       <AreaChart
         data={data}
@@ -34,10 +36,11 @@ export default function CurrencyTrendChart(props) {
         <Area
           type="monotone"
           dataKey={currency}
-          stroke="#8884d8"
-          fill="#8884d8"
+          stroke="#1c249a"
+          fill="#3f51b5"
         />
       </AreaChart>
     </ResponsiveContainer>
+    </Paper>
   );
 }

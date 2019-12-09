@@ -8,7 +8,6 @@ let mockedRates = { rates: { CAD: 1.4608, HKD: 8.6361, PLN: 4.5 } };
 export function* ratesSaga(useToaster = true) {
   let toaster = new Toaster("ratesToaster");
   let response = null;
-  let toastify = false;
   let data = null;
   console.log("Starting fetching rates...");
   if (useToaster) yield toaster.inProgress("Fetching rates...");
