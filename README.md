@@ -1,6 +1,7 @@
 ## My Wallet app:
 
 See it live on:
+#### Please refresh the site after the first visit - there's timeout, probably because of Heroku free hosting plan.
 https://taranek-my-wallet.herokuapp.com/
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
